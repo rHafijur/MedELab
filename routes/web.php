@@ -23,3 +23,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/superadmin', 'SuperAdminController@index');
+Route::get('/superadmin/generatelabel', 'SuperAdminController@generatelabel');
+Route::post('/superadmin/generatelabel', 'SuperAdminController@showGeneratedLabel');
