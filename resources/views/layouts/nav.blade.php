@@ -6,7 +6,11 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">
+          @if(auth()->check() && auth()->user()->type==1)
+          Super Admin
+          @endif
+        </div>
       </a>
 
       <!-- Divider -->
@@ -40,6 +44,7 @@
             <a class="collapse-item" href="cards.html">Cards</a>
             @if(auth()->check() && auth()->user()->type==1)
             <a class="collapse-item" href="{{url('/superadmin/generatelabel')}}">Generate Label</a>
+            <a class="collapse-item" href="{{url('/register_user')}}">Register Users</a>
             @endif
           </div>
         </div>
@@ -274,7 +279,11 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                  @if(auth()->check())
+                    {{auth()->user()->name}}
+                  @endif
+                </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->

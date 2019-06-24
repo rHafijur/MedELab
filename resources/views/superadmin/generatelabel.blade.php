@@ -7,11 +7,11 @@
 	@csrf
 	<div class="form-row">
 	  <div class="form-group col-md-3">
-	    <label for="number">Number of labels</label>
-	    <input type="number" class="form-control" name="number" id="number" placeholder="Ex: 1000">
+	    <label for="number">Number of pages of label</label>
+	    <input type="number" class="form-control" name="number" id="number" placeholder="MAX: 30 pages">
 	  </div>
 	</div>
-    <button type="submit" class="btn btn-primary">Generate</button>
+    <button type="submit" class="btn btn-primary">Generate & Download</button>
 </form>
 
 @endsection

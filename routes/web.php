@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test', function () {
+    return App\WordAdmin::all();
+});
 
 Auth::routes();
 
@@ -21,7 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/superadmin', 'SuperAdminController@index');
 Route::get('/superadmin/generatelabel', 'SuperAdminController@generatelabel');
 Route::post('/superadmin/generatelabel', 'SuperAdminController@showGeneratedLabel');
+Route::get('/register_user',function(){
+	return view('superadmin.register_user');
+});
+Route::post('/register_user', 'SuperAdminController@registerUser');
