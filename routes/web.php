@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    return App\WordAdmin::all();
+    // return App\WordAdmin::find(1);
+    // return auth()->user()->wordAdmin->word;
+   	return auth()->user()->type;
 });
 
 Auth::routes();
@@ -24,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-
+Route::middleware(['superAdmin'])->group(function () {
 Route::get('/superadmin', 'SuperAdminController@index');
 Route::get('/superadmin/generatelabel', 'SuperAdminController@generatelabel');
 Route::post('/superadmin/generatelabel', 'SuperAdminController@showGeneratedLabel');
@@ -32,3 +34,16 @@ Route::get('/register_user',function(){
 	return view('superadmin.register_user');
 });
 Route::post('/register_user', 'SuperAdminController@registerUser');
+});
+
+
+Route::middleware(['wordAdmin'])->group(function () {
+Route::get('/word_admin',function(){
+	return view('wordadmin.home');
+});
+
+Route::get('/register_patient',function(){
+	return view('wordadmin.register_patient');
+});
+Route::post('/register_patient', 'WordAdminController@registerPatient');
+});

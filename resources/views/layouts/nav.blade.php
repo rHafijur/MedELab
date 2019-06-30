@@ -7,8 +7,19 @@
           <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">
-          @if(auth()->check() && auth()->user()->type==1)
-          Super Admin
+          @if(auth()->check())
+          @switch(auth()->user()->type)
+              @case(1)
+                  Super Admin
+                  @break
+
+              @case(4)
+                  Word Admin
+                  @break
+
+              @default
+                  Default
+          @endswitch
           @endif
         </div>
       </a>

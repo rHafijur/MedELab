@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    //
+    protected $fillable = [
+        'user_id','age','phone','address','attendants_name','attendants_phone','word_id','bed',
+    ];
+    public function user(){
+    	return $this->belongsTo('App\User');
+    }
 }

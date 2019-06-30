@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -70,7 +75,8 @@
                         <script>
                         	function checkUser(){
                         	var addi= $('#additional');
-                        		console.log($('#type').val());
+                                addi.empty();
+                        		// console.log($('#type').val());
                         		if($('#type').val()==4){
                         			addi.append(
                         				`<div class="form-group row">
@@ -88,7 +94,18 @@
                         </div>
                         				`
                         				);
-                        		}
+                        		}else if($('#type').val()==3){
+                                    addi.append(
+                                        `<div class="form-group row">
+                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
+
+                            <div class="col-md-6">
+                                <input type='text'  id="department" class="form-control @error('type') is-invalid @enderror" name="department" required autocomplete="type"/>
+                            </div>
+                        </div>
+                                        `
+                                        );
+                                }
                         	}
                         </script>
 

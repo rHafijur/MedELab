@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\WordAdmin;
+use App\Doctor;
 use Illuminate\Support\Facades\Hash;
 use PDF;
 
@@ -35,12 +36,17 @@ class SuperAdminController extends Controller
             'password' => Hash::make($request->input('password')),
             'type' => $request->input('type'),
         ])->id;
-    	if ($request->input('word')!=null) {
+    	if ($request->input('type')==4) {
     		WordAdmin::create([
     			'user_id'=>$user_id,
     			'word_id'=>$request->input('word'),
     		]);
-    	}
-    	return "Success";
+    	}elseif($request->input('type')==3){
+            Doctor::create([
+                'user_id'=>$user_id,
+                'department'=>$request->input('department'),
+            ]);
+        }
+    	return redirect()->back()->with('success', 'User registered successfully!');
     }
 }
