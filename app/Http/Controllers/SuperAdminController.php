@@ -24,6 +24,7 @@ class SuperAdminController extends Controller
     	return $pdf->download("Labels".date("d-m-y").".pdf");
     }
     public function registerUser(Request $request){
+        // dd($request);
     	$request->validate([
     		'name' => ['required', 'string', 'max:255'],
     		'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

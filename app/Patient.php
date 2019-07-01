@@ -12,4 +12,11 @@ class Patient extends Model
     public function user(){
     	return $this->belongsTo('App\User');
     }
+    public function word(){
+    	return $this->belongsTo('App\Word');
+    }
+    public function doctors()
+    {
+        return $this->belongsToMany('App\Doctor');
+    }
 }

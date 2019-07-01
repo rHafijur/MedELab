@@ -16,11 +16,11 @@ class WordAdmin
      */
     public function handle($request, Closure $next)
     {
-        $type=Auth::user()->type;
-        if(Auth::check() && $type!=4){
-            switch ($type) {
+        
+        if(Auth::check() && Auth::user()->type!=4){
+            switch (Auth::user()->type) {
                 case 1:
-                    return redirect('word_admin');
+                    return redirect('superadmin');
                     break;
                 
                 default:
