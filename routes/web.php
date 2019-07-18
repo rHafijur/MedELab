@@ -17,7 +17,8 @@ Route::get('/', function () {
 Route::get('/test', function () {
     // return App\WordAdmin::find(1);
     // return auth()->user()->wordAdmin->word;
-   	return auth()->user()->type;
+	   // return auth()->user()->type;
+	//    return App\PathologyDepartment::find(1)->tests[0]->subtests[0]->test->pathology_department->title;
 });
 
 Auth::routes();
@@ -48,7 +49,8 @@ Route::get('/register_patient',function(){
 Route::post('/register_patient', 'WordAdminController@registerPatient');
 Route::get('/patients','WordAdminController@patients');
 Route::get('word_admin/patient/{id}','WordAdminController@patient');
-Route::post('word_admin/assign_doctor','WordAdminController@assignDoctor');
+Route::post('word_admin/assign_doctor','PatientController@assignDoctor');
+Route::post('word_admin/add_prescription','PatientController@addPrescription');
 
 });
 Route::get('patient_id_card/{id}','PatientController@generateIdCard');

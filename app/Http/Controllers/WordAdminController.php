@@ -58,20 +58,5 @@ class WordAdminController extends Controller
         }
         return view('wordadmin.patient',compact('patient'));
     }
-    public function assignDoctor(Request $request){
-        $doctor=Doctor::find($request->input('doctor'));
-        try{
 
-        $doctor->patients()->attach($request->input('patient'));
-    }catch(QueryException $e){
-
-        return redirect()->back()->with('success', 'Doctor Assigned successfully!');
-    }
-
-       
-
-        return redirect()->back()->with('faild', 'Something went wrong! please try again.');
-        
-
-    }
 }

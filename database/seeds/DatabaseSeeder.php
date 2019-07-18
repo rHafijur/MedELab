@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
                 WordAdminSeeder::class,
                 DoctorSeeder::class,
                 PatientSeeder::class,
+                TestSeeder::class,
+                MedicineSeeder::class,
         	]
         );
     }

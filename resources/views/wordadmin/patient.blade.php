@@ -24,7 +24,7 @@
         <a class="nav-link" href="{{url('patient_id_card/'.$patient->id)}}">Generate ID card</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#new_prescription_modal">New Prescription</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -135,5 +135,154 @@
   </div>
 </div>
 
+<!-- New prescription Modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button> -->
+
+<div class="modal fade bd-example-modal-xl" id='new_prescription_modal' tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+  <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="new_prescription_modal_title">New Prescription</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form method="post" action="{{url('/word_admin/add_prescription')}}">
+      <div class="modal-body">
+      	@csrf
+          <div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="patient">Patient</label>
+					<input type="text" class="form-control" id="patient" value="{{$patient->user->name}}"  disabled>
+					<input type="hidden"  name="patient" value="{{$patient->id}}">
+					
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="doctor">Referer</label>
+					<select class="form-control" id="doctor" name="doctor">
+						<option>select</option>
+						@foreach(App\Doctor::all() as $doctor)
+						<option value="{{$doctor->id}}">{{$doctor->user->name}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-md-8">
+				<label>Medicines</label>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-5">
+								<select class="form-control" id="medicine" name="medicine[]">
+										<option>select</option>
+										@foreach (App\Medicine::all() as $medicine)
+										<option value="{{$medicine->id}}">{{$medicine->title}}</option>
+										@endforeach
+									</select>
+						</div>
+						<div class="col-md-7">
+								<div class="form-check">
+									<div class="row">
+										<div class="col-md-4">
+												<input class="form-check-input" name="morning[]" type="checkbox" id="morningCheck">
+												<label class="form-check-label" for="morningCheck">Morning</label>	
+										</div>	
+										<div class="col-md-4">
+												<input class="form-check-input" name="afternoon[]" type="checkbox" id="morningCheck">
+												<label class="form-check-label" for="afternoonCheck">Afternoon</label>	
+										</div>	
+										<div class="col-md-4">
+												<input class="form-check-input" name="night[]" type="checkbox" id="morningCheck">
+												<label class="form-check-label" for="nightCheck">Night</label>	
+										</div>	
+									</div>		
+								</div>
+						</div>
+					</div>
+				</div>
+				<div id="extraMedicines">
+
+				</div>
+				<button class="btn btn-success" onclick="return addMedicine()" >+</button>
+			</div>
+			<div class="col-md-4">
+				<label for="doctor">Tests</label>
+				<div class="form-group">
+					<select class="form-control" name="tests[]" >
+						<option>select</option>
+						@foreach (App\Test::all() as $test)
+					<option value="{{$test->id}}">{{$test->title}}</option>
+						@endforeach
+					</select>
+				</div>
+				<div id="extraTests"></div>
+				<button class="btn btn-success" onclick="return addTest()" >+</button>
+			</div>
+		  </div>
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<script>
+	function addMedicine(){
+		var med=`
+		<div class="form-group">
+					<div class="row">
+						<div class="col-md-5">
+								<select class="form-control" id="medicine" name="medicine[]">
+										<option>select</option>
+										@foreach (App\Medicine::all() as $medicine)
+										<option value="{{$medicine->id}}">{{$medicine->title}}</option>
+										@endforeach
+									</select>
+						</div>
+						<div class="col-md-7">
+								<div class="form-check">
+									<div class="row">
+										<div class="col-md-4">
+												<input class="form-check-input" name="morning[]" type="checkbox" id="morningCheck">
+												<label class="form-check-label" for="morningCheck">Morning</label>	
+										</div>	
+										<div class="col-md-4">
+												<input class="form-check-input" name="afternoon[]" type="checkbox" id="morningCheck">
+												<label class="form-check-label" for="afternoonCheck">Afternoon</label>	
+										</div>	
+										<div class="col-md-4">
+												<input class="form-check-input" name="night[]" type="checkbox" id="morningCheck">
+												<label class="form-check-label" for="nightCheck">Night</label>	
+										</div>	
+									</div>		
+								</div>
+						</div>
+					</div>
+				</div>
+		`;
+		$("#extraMedicines").append(med);
+		return false;
+	}
+	function addTest(){
+		var tests=`
+		<div class="form-group">
+					<select class="form-control" name="tests[]" >
+						<option>select</option>
+						@foreach (App\Test::all() as $test)
+					<option value="{{$test->id}}">{{$test->title}}</option>
+						@endforeach
+					</select>
+				</div>
+		`;
+		$("#extraTests").append(tests);
+		return false;
+	}
+</script>
 
 @endsection
