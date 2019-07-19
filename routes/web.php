@@ -19,6 +19,8 @@ Route::get('/test', function () {
     // return auth()->user()->wordAdmin->word;
 	   // return auth()->user()->type;
 	//    return App\PathologyDepartment::find(1)->tests[0]->subtests[0]->test->pathology_department->title;
+	// dd(App\Patient::find(1)->prescriptions()->orderBy('id','desc')->get());
+	dd(App\Prescription::find(5)->medicines[0]->pivot->morning);
 });
 
 Auth::routes();
@@ -54,3 +56,4 @@ Route::post('word_admin/add_prescription','PatientController@addPrescription');
 
 });
 Route::get('patient_id_card/{id}','PatientController@generateIdCard');
+Route::get('prescription/{id}','PrescriptionController@show');

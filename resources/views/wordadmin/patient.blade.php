@@ -2,17 +2,6 @@
 @section('title','Word Admin')
 @section('body')
 <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
-
-  	@if (session('success'))
-  	    <div class="alert alert-success">
-  	        {{ session('success') }}
-  	    </div>
-  	@endif
-  	@if (session('failed'))
-  	    <div class="alert alert-danger">
-  	        {{ session('failed') }}
-  	    </div>
-  	@endif
     <ul class="navbar-nav">
       <li class="nav-item active">
         {{-- <a class="nav-link" href="{{url('/word_admin/assign_doctor/'.$patient->id)}}">Assign doctor</a> --}}
@@ -32,6 +21,16 @@
     </ul>
 
 </nav>
+@if (session('success'))
+<div class="alert alert-success">
+	{{ session('success') }}
+</div>
+@endif
+@if (session('failed'))
+<div class="alert alert-danger">
+	{{ session('failed') }}
+</div>
+@endif
 <div class="card">
 	<div class="card-header">
 	  Patient's info
@@ -82,15 +81,20 @@
 	<div class="col-md-6">
 		<div class="card">
 			<div class="card-header">
-			  Patient's info
+			  Prescriptions
 			</div>
 		  <div class="card-body">
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item"><strong>Word: </strong>{{$patient->word->title}} - {{$patient->word->department}} </li>
-		  <li class="list-group-item"><strong>Bed: </strong>{{$patient->bed}} </li>
-		  <li class="list-group-item"><strong>Age:</strong> {{$patient->age}}</li>
-		  <li class="list-group-item"><strong>Attendant's name: </strong>{{$patient->attendants_name}} </li>
-		  <li class="list-group-item"><strong>Attendant's phone: </strong>{{$patient->attendants_phone}} </li>
+			@php
+				use Carbon\Carbon;
+			@endphp
+			@foreach (App\Patient::find($patient->id)->prescriptions()->orderBy('id','desc')->get() as $prescription)
+			@php
+				$dt=new Carbon($prescription->created_at);
+			@endphp
+			<li class="list-group-item"><a href="{{url('prescription/'.$prescription->id)}}">{{$dt->format('l jS \\of F Y h:i:s A')}} referred by {{$prescription->doctor->user->name}}</a> </li>
+			@endforeach
+		 
 		</ul>
 		  </div>
 		</div>

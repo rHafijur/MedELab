@@ -15,7 +15,7 @@ class Prescription extends Model
     }
 
     public function medicines(){
-        return $this->belongsToMany(Medicine::class);
+        return $this->belongsToMany(Medicine::class)->withPivot('morning', 'afternoon','night');
     }
 
     public function patient(){

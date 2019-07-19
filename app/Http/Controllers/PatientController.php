@@ -48,6 +48,9 @@ class PatientController extends Controller
         foreach ($request->tests as $test) {
             Prescription::find($pId)->tests()->attach($test);
         }
+        return redirect()->back()->with('success', 'Prescription saved successfully!');
 
     }
+
+
 }
