@@ -22,6 +22,10 @@ class WordAdmin
                 case 1:
                     return redirect('superadmin');
                     break;
+
+                case 2:
+                    return redirect('patient');
+                    break;
                 
                 default:
                     # code...

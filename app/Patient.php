@@ -23,4 +23,7 @@ class Patient extends Model
     {
         return $this->hasMany('App\Prescription');
     }
+    public function payments(){
+        return $this->hasMany('App\Payment');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Patient;
 use App\Doctor;
 use App\Prescription;
@@ -10,6 +11,13 @@ use PDF;
 
 class PatientController extends Controller
 {
+    public function index(){
+        $id = Auth::id();
+        $patient= Auth::user()->patient;
+        // dd($patient);
+        return view('patient.patient',compact('patient')); 
+    }
+
     public function generateIdCard($id){
     	$patient=Patient::find($id);
     	// return view('patient.generate_id_card',compact('patient'));

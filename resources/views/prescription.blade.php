@@ -17,7 +17,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <h5 class="card-title"><strong>Prescription id: </strong>{{$prescription->id}}</h5>
-                                        <h5 class="card-title"><strong>Prescribed by: </strong>{{$prescription->doctor->user->name}}</h5>
+                                    <h5 class="card-title"><strong>Prescribed by: </strong>{{$prescription->doctor->user->name}}</h5>
+                                    <h5 class="card-title"><strong>Date: </strong>{{$prescription->doctor->user->name}}</h5>
                                 </div>
                         </div>
                 </div>

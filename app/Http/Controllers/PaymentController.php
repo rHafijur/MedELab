@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CashCounterAdminController extends Controller
+class PaymentController extends Controller
 {
     //
 }

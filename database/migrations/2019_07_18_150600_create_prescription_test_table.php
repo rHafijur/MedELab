@@ -16,6 +16,8 @@ class CreatePrescriptionTestTable extends Migration
         Schema::create('prescription_test', function (Blueprint $table) {
             $table->integer('prescription_id');
             $table->integer('test_id');
+            $table->string('sample_id')->nullable();
+            $table->tinyInteger('completed')->nullable();
             $table->timestamps();
             $table->primary(['prescription_id','test_id']);
         });

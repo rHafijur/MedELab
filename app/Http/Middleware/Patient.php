@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class SuperAdmin
+class Patient
 {
     /**
      * Handle an incoming request.
@@ -15,15 +15,15 @@ class SuperAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
-        if(Auth::check() && Auth::user()->type!=1){
+    {
+        if(Auth::check() && Auth::user()->type!=2){
             switch (Auth::user()->type) {
+                case 1:
+                    return redirect('superadmin');
+                    break;
+                
                 case 4:
                     return redirect('word_admin');
-                    break;
-
-                case 2:
-                    return redirect('patient');
                     break;
                 
                 default:

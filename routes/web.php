@@ -48,6 +48,7 @@ Route::get('/word_admin',function(){
 Route::get('/register_patient',function(){
 	return view('wordadmin.register_patient');
 });
+
 Route::post('/register_patient', 'WordAdminController@registerPatient');
 Route::get('/patients','WordAdminController@patients');
 Route::get('word_admin/patient/{id}','WordAdminController@patient');
@@ -55,5 +56,10 @@ Route::post('word_admin/assign_doctor','PatientController@assignDoctor');
 Route::post('word_admin/add_prescription','PatientController@addPrescription');
 
 });
+
+Route::middleware(['auth','patient'])->group(function () {
+	Route::get('/patient','PatientController@index');	
+	});
+
 Route::get('patient_id_card/{id}','PatientController@generateIdCard');
 Route::get('prescription/{id}','PrescriptionController@show');

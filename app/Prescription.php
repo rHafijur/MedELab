@@ -25,4 +25,7 @@ class Prescription extends Model
     public function doctor(){
         return $this->belongsTo(Doctor::class);
     }
+    public function payment(){
+        return $this->hasOne('App\Payment');
+    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCashCounterAdminsTable extends Migration
+class CreateCounterAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateCashCounterAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cash_counter_admins', function (Blueprint $table) {
+        Schema::create('counter_admins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('counter')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateCashCounterAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cash_counter_admins');
+        Schema::dropIfExists('counter_admins');
     }
 }
