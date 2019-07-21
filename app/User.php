@@ -44,4 +44,8 @@ class User extends Authenticatable
        {
            return $this->hasOne('App\Patient','user_id','id');
        }
+       public function counter_admin()
+       {
+           return $this->hasOne('App\CounterAdmin','user_id','id');
+       }
 }

@@ -59,7 +59,15 @@ Route::post('word_admin/add_prescription','PatientController@addPrescription');
 
 Route::middleware(['auth','patient'])->group(function () {
 	Route::get('/patient','PatientController@index');	
-	});
+});
+
+Route::middleware(['auth','counterAdmin'])->group(function () {
+	Route::get('/counter_admin','CounterAdminController@index');	
+	Route::post('/counter_admin/prescriptions','CounterAdminController@patientPrescriptions');	
+	Route::post('/counter_admin/save_payment','PaymentController@save_payment');	
+	Route::get('/counter_admin/prescriptions/make_payment/{prescription_id}','PaymentController@make_payment');	
+	Route::get('/counter_admin/invoice/{payment_id}','PaymentController@invoice');	
+});
 
 Route::get('patient_id_card/{id}','PatientController@generateIdCard');
 Route::get('prescription/{id}','PrescriptionController@show');

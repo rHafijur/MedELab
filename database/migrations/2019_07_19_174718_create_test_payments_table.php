@@ -15,8 +15,8 @@ class CreateTestPaymentsTable extends Migration
     {
         Schema::create('test_payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('test_payment_id')->unsigned();
-            $table->foreign('test_payment_id')->references('id')->on('test_payments');
+            $table->bigInteger('payment_id')->unsigned();
+            $table->foreign('payment_id')->references('id')->on('payments');
             $table->bigInteger('test_id')->unsigned();
             $table->foreign('test_id')->references('id')->on('tests');
             $table->float('price',8,2);
