@@ -34,7 +34,7 @@
                                         <td>{{$dt->format('l jS \\of F Y h:i:s A')}} referred by {{$prescription->doctor->user->name}} </td>
                                         <td>
                                             <a href="{{url('counter_admin/prescriptions/make_payment/'.$prescription->id)}}">
-                                                <button class="btn btn-info">Add to payment</button>
+                                                <button type="button" {!!($prescription->payment!=null)?'title="Already Paid" data-toggle="tooltip" data-placement="top" disabled':''!!} class="btn btn-secondary">Add to payment</button>
                                             </a>
                                         </td>
                                     </tr>

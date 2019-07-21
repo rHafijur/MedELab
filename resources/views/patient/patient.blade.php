@@ -55,7 +55,7 @@
 </div>
 
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-2">
 		<div class="card">
 			<div class="card-header">
 			  Assigned Doctor(s)
@@ -74,6 +74,70 @@
 		</div>
 	</div>
 	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header">
+			  Assign tube id
+			</div>
+		  <div class="card-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Test</th>
+					<th>Sample</th>
+					<th>Tube Id</th>
+				</tr>
+			</thead>
+			<tbody>
+			@php
+				$pathologyDepartments=App\PathologyDepartment::all();
+			@endphp
+		@foreach($pathologyDepartments as $pathologyDepartment)
+			@php
+				$testOrders= $pathologyDepartment->testOrders()->where('patient_id',$patient->id)->where('completed',0)->get();
+				if(count($testOrders)<1){
+					continue;
+				}
+			@endphp
+			<tr class="table-secondary">
+				<td></td>
+			<td><strong>{{$pathologyDepartment->title}} Test(s)</strong></td>
+			<td>
+			</td>
+			</tr>
+
+		  @foreach ($testOrders as $testOrder)
+			  <tr>
+				  <td>
+					  {{$testOrder->test->title}}
+				  </td>
+				  <td>
+					  {{$testOrder->test->sample_type}}
+				  </td>
+				  <td>
+					  @if ($testOrder->sample_id==null)
+					  <form action="{{url('patient/set_tube_id')}}" method="POST">
+						@csrf
+					<input type="hidden" value="{{$testOrder->id}}" name="test_order_id">
+					<div class="form-group">
+						<input type="text" class="form-control" name="sample_id" placeholder="Tube Id">
+					</div>
+					<button type="submit" class="btn btn-sm btn-secondary">Submit</button>
+					</form>
+						@else
+						{{$testOrder->sample_id}}
+					  @endif
+						
+				  </td>
+			  </tr>
+		  @endforeach
+		@endforeach
+		  
+				</tbody>
+			</table>
+		  </div>
+		</div>
+	</div>
+	<div class="col-md-4">
 		<div class="card">
 			<div class="card-header">
 			  Prescriptions

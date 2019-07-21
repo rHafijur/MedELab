@@ -59,6 +59,7 @@ Route::post('word_admin/add_prescription','PatientController@addPrescription');
 
 Route::middleware(['auth','patient'])->group(function () {
 	Route::get('/patient','PatientController@index');	
+	Route::post('/patient/set_tube_id','PatientController@setTubeId');	
 });
 
 Route::middleware(['auth','counterAdmin'])->group(function () {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Patient;
 use App\Doctor;
+use App\TestOrder;
 use App\Prescription;
 use PDF;
 
@@ -14,7 +15,7 @@ class PatientController extends Controller
     public function index(){
         $id = Auth::id();
         $patient= Auth::user()->patient;
-        // dd($patient);
+        // dd($id); 
         return view('patient.patient',compact('patient')); 
     }
 
@@ -58,6 +59,13 @@ class PatientController extends Controller
         }
         return redirect()->back()->with('success', 'Prescription saved successfully!');
 
+    }
+    
+    public function setTubeId(Request $request){
+        $testOrder= TestOrder::find($request->test_order_id);
+        $testOrder->sample_id=$request->sample_id;
+        $testOrder->save();
+        return redirect()->back()->with('success','Updated successfully');
     }
 
 

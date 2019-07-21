@@ -14,4 +14,8 @@ class PathologyDepartment extends Model
     {
         return $this->hasMany('App\Test');
     }
+    public function testOrders()
+    {
+        return $this->hasMany('App\TestOrder');
+    }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Prescription;
 use App\Payment;
 use App\TestPayment;
+use App\TestOrder;
 use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
@@ -39,7 +40,15 @@ class PaymentController extends Controller
         foreach($testPayments as $testPayment){
             $payment->testPayments()->save($testPayment);
         }
-        return redirect('couter_admin/invoice/'.$payment->id);
+        foreach($payment->testPayments as $testPayment){
+            TestOrder::create([
+                'patient_id'=>$patient_id,
+                'prescription_id'=>$prescription->id,
+                'test_id'=>$testPayment->test_id,
+                'pathology_department_id'=>$testPayment->test->pathology_department_id
+            ]);
+        }
+        return redirect('counter_admin/invoice/'.$payment->id);
     }
     public function invoice($payment_id){
         $payment=Payment::findOrFail($payment_id);
