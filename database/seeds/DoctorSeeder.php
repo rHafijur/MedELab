@@ -18,7 +18,7 @@ class DoctorSeeder extends Seeder
             'name' =>'Dr. Rahim',
             'email' => 'dr.rahim@site.com',
             'password' => Hash::make('12345678'),
-            'type' => 3,
+            'role_id' => 3,
         ])->id;
         Doctor::create([
             'user_id'=>$user_id,

@@ -54,7 +54,7 @@
                                     <option value="3">Doctor</option>
                                     <option value="4">Word Admin</option>
                                     <option value="5">Pharmacy Admin</option>
-                                    <option value="6">Cash counter Admin</option>
+                                    <option value="6">Counter Admin</option>
                                     <option value="7">Lab Admin</option>
                                 </select>
 
@@ -100,7 +100,19 @@
                             <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
 
                             <div class="col-md-6">
-                                <input type='text'  id="department" class="form-control @error('type') is-invalid @enderror" name="department" required autocomplete="type"/>
+                                <input type='text'  id="department" class="form-control @error('department') is-invalid @enderror" name="department" required autocomplete="department"/>
+                            </div>
+                        </div>
+                                        `
+                                        );
+                                }
+                                else if($('#type').val()==6){
+                                    addi.append(
+                                        `<div class="form-group row">
+                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Counter') }}</label>
+
+                            <div class="col-md-6">
+                                <input type='text'  id="counter" class="form-control @error('counter') is-invalid @enderror" name="counter" required autocomplete="counter"/>
                             </div>
                         </div>
                                         `

@@ -7,20 +7,7 @@
           <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">
-          @if(auth()->check())
-          @switch(auth()->user()->type)
-              @case(1)
-                  Super Admin
-                  @break
-
-              @case(4)
-                  Word Admin
-                  @break
-
-              @default
-                  Default
-          @endswitch
-          @endif
+          {{auth()->user()->role->title}}
         </div>
       </a>
 
@@ -53,7 +40,7 @@
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="buttons.html">Buttons</a>
             <a class="collapse-item" href="cards.html">Cards</a>
-            @if(auth()->check() && auth()->user()->type==1)
+            @if(auth()->check() && auth()->user()->role_id==1)
             <a class="collapse-item" href="{{url('/superadmin/generatelabel')}}">Generate Label</a>
             <a class="collapse-item" href="{{url('/register_user')}}">Register Users</a>
             @endif

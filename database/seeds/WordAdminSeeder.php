@@ -18,7 +18,7 @@ class WordAdminSeeder extends Seeder
                 'name' =>'Word man',
                 'email' => 'wordadmin@site.com',
                 'password' => Hash::make('12345678'),
-                'type' => 4,
+                'role_id' => 4,
             ])->id;
             WordAdmin::create([
             	'user_id'=>$user_id,

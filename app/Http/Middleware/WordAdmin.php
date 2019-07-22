@@ -17,8 +17,8 @@ class WordAdmin
     public function handle($request, Closure $next)
     {
         
-        if(Auth::check() && Auth::user()->type!=4){
-            switch (Auth::user()->type) {
+        if(Auth::check() && Auth::user()->role_id!=4){
+            switch (Auth::user()->role_id) {
                 case 1:
                     return redirect('superadmin');
                     break;
@@ -27,8 +27,24 @@ class WordAdmin
                     return redirect('patient');
                     break;
                 
+                case 3:
+                    // return redirect('doctor');
+                    break;
+
+                // case 4:
+                //     return redirect('word_admin');
+                //     break;
+                case 5:
+                    return redirect('pharmacy_admin');
+                    break;
+                case 6:
+                    return redirect('counter_admin');
+                    break;
+                case 7:
+                    // return redirect('lab_admin');
+                    break;
                 default:
-                    # code...
+                    return abort(404);
                     break;
             }
         }

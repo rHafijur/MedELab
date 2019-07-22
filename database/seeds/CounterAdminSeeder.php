@@ -18,7 +18,7 @@ class CounterAdminSeeder extends Seeder
             'name' =>'Mr. Jaman',
             'email' => 'jaman.counter@site.com',
             'password' => Hash::make('12345678'),
-            'type' => 6,
+            'role_id' => 6,
         ])->id;
         CounterAdmin::create(
             [

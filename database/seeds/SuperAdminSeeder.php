@@ -17,7 +17,7 @@ class SuperAdminSeeder extends Seeder
         $user->name='Hafijur Rahman';
         $user->email='bmsakib09.hr@gmail.com';
         $user->password=Hash::make('12345678');
-        $user->type=1;
+        $user->role_id=1;
         $user->save();
     }
 }

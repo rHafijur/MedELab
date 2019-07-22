@@ -27,7 +27,7 @@ class WordAdminController extends Controller
     	        'name' => $request->input('name'),
     	        'email' => $request->input('email'),
     	        'password' => Hash::make($request->input('password')),
-    	        'type' => 2,
+    	        'role_id' => 2,
     	    ])->id;
 
     	    $patient =Patient::create([

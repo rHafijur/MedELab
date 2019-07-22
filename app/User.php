@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','type'
+        'name', 'email', 'password','role_id'
     ];
 
     /**
@@ -40,6 +40,9 @@ class User extends Authenticatable
        {
            return $this->hasOne('App\WordAdmin');
        }
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
     public function patient()
        {
            return $this->hasOne('App\Patient','user_id','id');

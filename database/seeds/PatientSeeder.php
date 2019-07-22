@@ -18,7 +18,7 @@ class PatientSeeder extends Seeder
             'name' =>'Abdul Karim',
             'email' => 'karim@site.com',
             'password' => Hash::make('12345678'),
-            'type' => 2,
+            'role_id' => 2,
         ])->id;
         Patient::create(
             [
