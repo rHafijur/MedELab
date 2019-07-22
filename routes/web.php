@@ -37,6 +37,13 @@ Route::get('/register_user',function(){
 	return view('superadmin.register_user');
 });
 Route::post('/register_user', 'SuperAdminController@registerUser');
+Route::get('/tests', 'TestController@index');
+Route::get('/test/{id}', 'TestController@show');
+Route::get('/delete_test/{id}', 'TestController@delete');
+Route::post('/create_test', 'TestController@create');
+Route::post('/update_test', 'TestController@update');
+Route::post('/update_subtest', 'SubtestController@update');
+Route::post('/create_subtest', 'TestController@create');
 });
 
 
@@ -49,8 +56,8 @@ Route::get('/register_patient',function(){
 	return view('wordadmin.register_patient');
 });
 
-Route::post('/register_patient', 'WordAdminController@registerPatient');
-Route::get('/patients','WordAdminController@patients');
+Route::post('register_patient', 'WordAdminController@registerPatient');
+Route::get('patients','WordAdminController@patients');
 Route::get('word_admin/patient/{id}','WordAdminController@patient');
 Route::post('word_admin/assign_doctor','PatientController@assignDoctor');
 Route::post('word_admin/add_prescription','PatientController@addPrescription');
