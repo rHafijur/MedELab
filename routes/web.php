@@ -43,7 +43,7 @@ Route::get('/delete_test/{id}', 'TestController@delete');
 Route::post('/create_test', 'TestController@create');
 Route::post('/update_test', 'TestController@update');
 Route::post('/update_subtest', 'SubtestController@update');
-Route::post('/create_subtest', 'TestController@create');
+Route::post('/create_subtest', 'SubtestController@create');
 });
 
 
