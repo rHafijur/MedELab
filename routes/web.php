@@ -60,7 +60,6 @@ Route::post('register_patient', 'WordAdminController@registerPatient');
 Route::get('patients','WordAdminController@patients');
 Route::get('word_admin/patient/{id}','WordAdminController@patient');
 Route::post('word_admin/assign_doctor','PatientController@assignDoctor');
-Route::post('word_admin/add_prescription','PatientController@addPrescription');
 
 });
 
@@ -69,12 +68,23 @@ Route::middleware(['auth','patient'])->group(function () {
 	Route::post('/patient/set_tube_id','PatientController@setTubeId');	
 });
 
+
+
 Route::middleware(['auth','counterAdmin'])->group(function () {
 	Route::get('/counter_admin','CounterAdminController@index');	
 	Route::post('/counter_admin/prescriptions','CounterAdminController@patientPrescriptions');	
 	Route::post('/counter_admin/save_payment','PaymentController@save_payment');	
 	Route::get('/counter_admin/prescriptions/make_payment/{prescription_id}','PaymentController@make_payment');	
 	Route::get('/counter_admin/invoice/{payment_id}','PaymentController@invoice');	
+});
+
+Route::middleware(['auth','doctor'])->group(function () {
+	Route::get('/doctor','DoctorController@index');	
+	Route::get('/doctor/search_patient','DoctorController@searchPatient');	
+	Route::post('/doctor/assign_patient','DoctorController@assignPatient');	
+	Route::post('/doctor/remove_patient','DoctorController@removePatient');
+	Route::post('doctor/add_prescription','DoctorController@addPrescription');
+	// Route::post('/patient/set_tube_id','PatientController@setTubeId');	
 });
 
 Route::get('patient_id_card/{id}','PatientController@generateIdCard');

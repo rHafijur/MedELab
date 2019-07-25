@@ -27,7 +27,7 @@ class SuperAdmin
                 break;
             
             case 3:
-                // return redirect('doctor');
+                return redirect('doctor');
                 break;
 
             case 4:

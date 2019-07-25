@@ -43,10 +43,14 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
-    public function patient()
-       {
+    public function patient(){
            return $this->hasOne('App\Patient','user_id','id');
-       }
+    }
+    public function doctor()
+    {
+        return $this->hasOne('App\Doctor');
+    }
+    
        public function counter_admin()
        {
            return $this->hasOne('App\CounterAdmin','user_id','id');

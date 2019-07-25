@@ -42,24 +42,6 @@ class PatientController extends Controller
 
     }
 
-    public function addPrescription(Request $request){
-        // dd($request);
-        $pId=Prescription::create(['patient_id'=>$request->patient,'doctor_id'=>$request->doctor])->id;
-        $i=0;
-        foreach($request->medicine as $medicine){
-            $morning=isset($request->morning[$i])?1:0;
-            $afternoon=isset($request->afternoon[$i])?1:0;
-            $night=isset($request->night[$i])?1:0;
-            Prescription::find($pId)->medicines()->attach($medicine,['morning'=>$morning,'afternoon'=>$afternoon,'night'=>$night]);
-            $i++;
-        }
-        $j=0;
-        foreach ($request->tests as $test) {
-            Prescription::find($pId)->tests()->attach($test);
-        }
-        return redirect()->back()->with('success', 'Prescription saved successfully!');
-
-    }
     
     public function setTubeId(Request $request){
         $testOrder= TestOrder::find($request->test_order_id);

@@ -49,7 +49,7 @@ class LoginController extends Controller
                 break;
             
             case 3:
-                // return '/doctor';
+                return '/doctor';
                 break;
 
             case 4:
