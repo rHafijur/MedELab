@@ -23,7 +23,7 @@ class CreateTestOrdersTable extends Migration
             $table->foreign('test_id')->references('id')->on('tests');
             $table->bigInteger('pathology_department_id')->unsigned();
             $table->foreign('pathology_department_id')->references('id')->on('pathology_departments');
-            $table->string('sample_id')->nullable()->unique();
+            $table->string('sample_id')->nullable();
             $table->tinyInteger('completed')->default(0);
             $table->timestamps();
         });

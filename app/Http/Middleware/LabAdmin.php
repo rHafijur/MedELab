@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CounterAdmin
+class LabAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class CounterAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->role_id!=6){
+        if(Auth::check() && Auth::user()->role_id!=7){
             switch (Auth::user()->role_id) {
                 case 1:
                     return redirect('superadmin');
@@ -40,7 +40,7 @@ class CounterAdmin
                     return redirect('counter_admin');
                     break;
                 case 7:
-                    return redirect('lab_admin');
+                    // return redirect('lab_admin');
                     break;
                 default:
                     return abort(404);

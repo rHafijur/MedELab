@@ -62,7 +62,7 @@ class LoginController extends Controller
                 return '/counter_admin';
                 break;
             case 7:
-                // return '/lab_admin';
+                return '/lab_admin';
                 break;
             default:
                 return abort(404);

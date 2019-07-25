@@ -84,7 +84,11 @@ Route::middleware(['auth','doctor'])->group(function () {
 	Route::post('/doctor/assign_patient','DoctorController@assignPatient');	
 	Route::post('/doctor/remove_patient','DoctorController@removePatient');
 	Route::post('doctor/add_prescription','DoctorController@addPrescription');
-	// Route::post('/patient/set_tube_id','PatientController@setTubeId');	
+});
+
+Route::middleware(['auth','labAdmin'])->group(function () {
+	Route::get('/lab_admin','LabAdminController@index');		
+	Route::get('/lab_admin/search_orders','LabAdminController@searchOrders');		
 });
 
 Route::get('patient_id_card/{id}','PatientController@generateIdCard');

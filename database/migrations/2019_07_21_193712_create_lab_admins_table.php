@@ -15,6 +15,10 @@ class CreateLabAdminsTable extends Migration
     {
         Schema::create('lab_admins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('pathology_department_id')->unsigned();
+            $table->foreign('pathology_department_id')->references('id')->on('pathology_departments');
             $table->timestamps();
         });
     }

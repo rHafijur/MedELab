@@ -12,8 +12,11 @@ class TestOrder extends Model
     public function test(){
         return $this->belongsTo('App\Test');
     }
+    public function patient(){
+        return $this->belongsTo('App\Patient');
+    }
     public function pathologyDepartment(){
-        return $this->hasOne('App\PathologyDepartment');
+        return $this->belongsTo('App\PathologyDepartment');
     }
     public function prescription(){
         return $this->hasOne('App\Prescription');

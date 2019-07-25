@@ -40,7 +40,7 @@ class Patient
                     return redirect('counter_admin');
                     break;
                 case 7:
-                    // return redirect('lab_admin');
+                    return redirect('lab_admin');
                     break;
                 default:
                     return abort(404);

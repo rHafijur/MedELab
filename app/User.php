@@ -36,10 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function wordAdmin()
-       {
+    public function wordAdmin(){
            return $this->hasOne('App\WordAdmin');
-       }
+    }
+    public function labAdmin(){
+        return $this->hasOne('App\LabAdmin');
+ }
     public function role(){
         return $this->belongsTo('App\Role');
     }
