@@ -89,6 +89,8 @@ Route::middleware(['auth','doctor'])->group(function () {
 Route::middleware(['auth','labAdmin'])->group(function () {
 	Route::get('/lab_admin','LabAdminController@index');		
 	Route::get('/lab_admin/search_orders','LabAdminController@searchOrders');		
+	Route::get('/lab_admin/make_report/order={id}','ReportController@make');		
+	Route::post('/lab_admin/create_report','ReportController@create');		
 });
 
 Route::get('patient_id_card/{id}','PatientController@generateIdCard');

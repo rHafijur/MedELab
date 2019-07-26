@@ -26,4 +26,10 @@ class Patient extends Model
     public function payments(){
         return $this->hasMany('App\Payment');
     }
+    public function tests(){
+        return $this->hasMany('App\Test');
+    }
+    public function reports(){
+        return $this->hasManyThrough('App\TestOrder','App\Report');
+    }
 }

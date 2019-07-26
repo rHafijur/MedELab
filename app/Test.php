@@ -16,4 +16,7 @@ class Test extends Model
     public function subtests(){
         return $this->hasMany('App\Subtest');
     }
+    public function reports(){
+        return $this->hasMany('App\Report');
+    }
 }

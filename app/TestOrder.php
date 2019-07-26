@@ -21,4 +21,7 @@ class TestOrder extends Model
     public function prescription(){
         return $this->hasOne('App\Prescription');
     }
+    public function reports(){
+        return $this->hasOne('App\Report');
+    }
 }
