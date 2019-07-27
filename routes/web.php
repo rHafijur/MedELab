@@ -93,5 +93,9 @@ Route::middleware(['auth','labAdmin'])->group(function () {
 	Route::post('/lab_admin/create_report','ReportController@create');		
 });
 
-Route::get('patient_id_card/{id}','PatientController@generateIdCard');
-Route::get('prescription/{id}','PrescriptionController@show');
+
+Route::middleware(['auth'])->group(function () {
+	Route::get('patient_id_card/{id}','PatientController@generateIdCard');
+	Route::get('prescription/{id}','PrescriptionController@show');
+	Route::get('test_report/{id}','ReportController@view');
+});

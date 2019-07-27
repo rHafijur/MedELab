@@ -30,5 +30,14 @@ class ReportController extends Controller
             ]);
         $i++;
         }
+        $testOrder=TestOrder::find($order_id);
+        $testOrder->completed=1;
+        $testOrder->save();
+        return redirect('lab_admin/search_orders?tube_id='.$testOrder->sample_id);
+    }
+    public function view($id){
+        $report=Report::findOrFail($id);
+        $patient=$report->testOrder->patient;
+        return view('test_report',compact('report','patient'));
     }
 }

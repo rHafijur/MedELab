@@ -12,4 +12,10 @@ class Report extends Model
     public function reportSubtests(){
         return $this->hasMany("App\ReportSubtest");
     }
+    public function testOrder(){
+        return $this->belongsTo('App\TestOrder');
+    }
+    public function labAdmin(){
+        return $this->belongsTo('App\LabAdmin');
+    }
 }

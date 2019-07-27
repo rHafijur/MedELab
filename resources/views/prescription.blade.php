@@ -18,7 +18,7 @@
                                 <div class="col-md-6">
                                     <h5 class="card-title"><strong>Prescription id: </strong>{{$prescription->id}}</h5>
                                     <h5 class="card-title"><strong>Prescribed by: </strong>{{$prescription->doctor->user->name}}</h5>
-                                    <h5 class="card-title"><strong>Date: </strong>{{$prescription->doctor->user->name}}</h5>
+                                    <h5 class="card-title"><strong>Date: </strong>{{Carbon\Carbon::parse($prescription->created_at)->toFormattedDateString()}}</h5>
                                 </div>
                         </div>
                 </div>
@@ -45,6 +45,42 @@
   </div>
   
   <button class="btn btn-info" onclick="printDiv('printableArea')"/>Print</button>
+
+  <div class="row">
+      <div class="col-md-6">
+          <div class="cord">
+              <div class="card-header">
+                  <div class="card-title">Test Report(s)</div>
+              </div>
+              <div class="card-body">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                                <th>Test</th>
+                                <th></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                            @foreach ($prescription->testOrders as $testOrder)
+                                <tr>
+                                    <td>
+                                        {{$testOrder->test->title}}
+                                    </td>
+                                    <td>
+                                        @if ($testOrder->report)
+                                            <a href="{{url('test_report/'.$testOrder->report->id)}}"><button class="btn btn-secondary">View Report</button></a>
+                                        @else
+                                            <button class="btn btn-danger" disabled>Report Pending</button>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
 
   <script>
       function printDiv(divName) {

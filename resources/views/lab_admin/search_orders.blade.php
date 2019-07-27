@@ -31,7 +31,11 @@
                             <td>{{$order->pathologyDepartment->title}}</td>
                             <td>
                                 @if ($order->pathology_department_id==auth()->user()->labAdmin->pathology_department_id)
+                                @if ($order->report)
+                                <a href="{{url("test_report/".$order->report->id)}}"><button class="btn btn-primary">View Report</button></a>
+                                @else
                                 <a href="{{url("lab_admin/make_report/order=".$order->id)}}"><button class="btn btn-secondary">Make Report</button></a>
+                                @endif
                                 @endif
                             </td>
                         </tr>

@@ -19,9 +19,9 @@ class TestOrder extends Model
         return $this->belongsTo('App\PathologyDepartment');
     }
     public function prescription(){
-        return $this->hasOne('App\Prescription');
+        return $this->belongsTo('App\Prescription');
     }
-    public function reports(){
+    public function report(){
         return $this->hasOne('App\Report');
     }
 }
