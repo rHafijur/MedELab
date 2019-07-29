@@ -10,6 +10,7 @@ return array(
     'App\\CounterAdmin' => $baseDir . '/app/CounterAdmin.php',
     'App\\Doctor' => $baseDir . '/app/Doctor.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Feedback' => $baseDir . '/app/Feedback.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',

@@ -1,25 +1,10 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    // return App\WordAdmin::find(1);
-    // return auth()->user()->wordAdmin->word;
-	   // return auth()->user()->type;
-	//    return App\PathologyDepartment::find(1)->tests[0]->subtests[0]->test->pathology_department->title;
-	// dd(App\Patient::find(1)->prescriptions()->orderBy('id','desc')->get());
 	dd(App\Prescription::find(5)->medicines[0]->pivot->morning);
 });
 
@@ -84,6 +69,7 @@ Route::middleware(['auth','doctor'])->group(function () {
 	Route::post('/doctor/assign_patient','DoctorController@assignPatient');	
 	Route::post('/doctor/remove_patient','DoctorController@removePatient');
 	Route::post('doctor/add_prescription','DoctorController@addPrescription');
+	Route::post('doctor/create_feedback','FeedbackController@create');
 });
 
 Route::middleware(['auth','labAdmin'])->group(function () {
