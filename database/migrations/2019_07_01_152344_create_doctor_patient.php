@@ -14,10 +14,12 @@ class CreateDoctorPatient extends Migration
     public function up()
     {
         Schema::create('doctor_patient', function (Blueprint $table) {
-            $table->integer('doctor_id');
-            $table->integer('patient_id');
+            $table->bigInteger('doctor_id')->unsigned();
+            $table->bigInteger('patient_id')->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->timestamps();
-            $table->primary(['doctor_id','patient_id']);
+            // $table->unique(['doctor_id','patient_id']);
         });
     }
 

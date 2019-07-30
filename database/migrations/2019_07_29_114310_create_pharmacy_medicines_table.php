@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubtestsTable extends Migration
+class CreatePharmacyMedicinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSubtestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subtests', function (Blueprint $table) {
+        Schema::create('pharmacy_medicines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('test_id')->unsigned();
-            $table->foreign('test_id')->references('id')->on('tests');
             $table->string('title');
-            $table->string('reference_values');
-            $table->string('unit');
+            $table->string('power')->nullable();
+            $table->double('price',2);
+            $table->string('group')->nullable();
+            $table->string('company')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSubtestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subtests');
+        Schema::dropIfExists('pharmacy_medicines');
     }
 }

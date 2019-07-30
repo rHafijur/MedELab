@@ -14,13 +14,15 @@ class CreateMedicinePrescriptionTable extends Migration
     public function up()
     {
         Schema::create('medicine_prescription', function (Blueprint $table) {
-            $table->integer('prescription_id');
-            $table->integer('medicine_id');
+            $table->bigInteger('prescription_id')->unsigned();
+            $table->bigInteger('medicine_id')->unsigned();
+            $table->foreign('prescription_id')->references('id')->on('prescriptions');
+            $table->foreign('medicine_id')->references('id')->on('medicines');
             $table->tinyInteger('morning')->nullable();
             $table->tinyInteger('afternoon')->nullable();
             $table->tinyInteger('night')->nullable();
             $table->timestamps();
-            $table->primary(['prescription_id','medicine_id']);
+            // $table->primary(['prescription_id','medicine_id']);
         });
     }
 
