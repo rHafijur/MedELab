@@ -17,7 +17,7 @@ class CreatePharmacyMedicinesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('power')->nullable();
-            $table->double('price',2);
+            $table->float('price');
             $table->string('group')->nullable();
             $table->string('company')->nullable();
             $table->timestamps();

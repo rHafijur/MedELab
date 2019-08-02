@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('patient_id')->unsigned();
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->double('total_price',2);
+            $table->float('total_price');
             $table->tinyInteger('delivered')->default(0);
             $table->timestamps();
         });

@@ -51,6 +51,9 @@ Route::post('word_admin/assign_doctor','PatientController@assignDoctor');
 Route::middleware(['auth','patient'])->group(function () {
 	Route::get('/patient','PatientController@index');	
 	Route::post('/patient/set_tube_id','PatientController@setTubeId');	
+	Route::get('/patient/order_medicine','OrderController@viewOrderForm');	
+	Route::post('/patient/order_medicine','OrderController@createOrder');	
+	Route::get('/patient/medicine_orders','OrderController@orders');	
 });
 
 

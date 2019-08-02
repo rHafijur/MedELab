@@ -165,7 +165,11 @@
                   </li>
                     @break
                 @case(2)
-                
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('patient/order_medicine')}}">
+                    <i class="fas fa-fw fa-vial"></i>
+                    <span>Order medicine</span></a>
+                </li>
                     @break
                 @case(3)
                     

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Word Admin')
+@section('title','Home')
 @section('body')
 <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
     <ul class="navbar-nav">
