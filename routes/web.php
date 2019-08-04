@@ -83,6 +83,12 @@ Route::middleware(['auth','labAdmin'])->group(function () {
 	Route::post('/lab_admin/create_report','ReportController@create');		
 });
 
+Route::middleware(['auth','pharmacyAdmin'])->group(function () {
+	Route::get('/pharmacy_admin','PharmacyAdminController@index');			
+	Route::get('/pharmacy_admin/medicine_order/{id}','OrderController@OrderPh');			
+	Route::post('/pharmacy_admin/delivered','OrderController@deliver');			
+});
+
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('patient_id_card/{id}','PatientController@generateIdCard');

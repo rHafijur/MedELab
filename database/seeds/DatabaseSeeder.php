@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
                 CounterAdminSeeder::class,
                 LabAdminSeeder::class,
                 PharmacyMedicineSeeder::class,
+                PharmacyAdminSeeder::class,
         	]
         );
     }

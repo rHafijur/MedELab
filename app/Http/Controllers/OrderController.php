@@ -46,4 +46,14 @@ class OrderController extends Controller
         $order= Order::find($id);
         return view('patient.order',compact('order'));
     }
+    public function orderPh($id){
+        $order= Order::find($id);
+        return view('pharmacy_admin.order',compact('order'));
+    }
+    public function deliver(Request $request){
+        $order= Order::find($request->order);
+        $order->delivered=1;
+        $order->save();
+        return redirect()->back();
+    }
 }
