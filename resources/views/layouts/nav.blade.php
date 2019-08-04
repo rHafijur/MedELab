@@ -170,6 +170,11 @@
                     <i class="fas fa-fw fa-vial"></i>
                     <span>Order medicine</span></a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('patient/medicine_orders')}}">
+                    <i class="fas fa-fw fa-vial"></i>
+                    <span>Medicine Orders</span></a>
+                </li>
                     @break
                 @case(3)
                     

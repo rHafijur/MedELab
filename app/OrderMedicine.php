@@ -9,4 +9,7 @@ class OrderMedicine extends Model
     protected $fillable=[
         'pharmacy_medicine_id','quantity','order_id','unit_price'
     ];
+    public function pharmacyMedicine(){
+        return $this->belongsTo('App\PharmacyMedicine');
+    }
 }

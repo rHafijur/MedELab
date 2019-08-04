@@ -35,10 +35,15 @@ class OrderController extends Controller
                 'unit_price'=>PharmacyMedicine::find($id)->price,
             ]);
         }
-        return "Success";
+        return redirect("patient/medicine_order/".$order_id);
 
     }
     public function orders(){
-        return auth()->user()->patient->orders;
+        $orders= auth()->user()->patient->orders()->latest()->get();
+        return view('patient.orders',compact('orders'));
+    }
+    public function order($id){
+        $order= Order::find($id);
+        return view('patient.order',compact('order'));
     }
 }

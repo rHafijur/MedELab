@@ -10,6 +10,10 @@ class Order extends Model
         'patient_id','total_price','delivered'
     ];
     public function orderMedicines(){
-        $this->hasMany('App\OrderMedicine');
+        return $this->hasMany('App\OrderMedicine');
     }
+    public function patient(){
+        return $this->belongsTo('App\Patient');
+    }
+    
 }

@@ -54,6 +54,7 @@ Route::middleware(['auth','patient'])->group(function () {
 	Route::get('/patient/order_medicine','OrderController@viewOrderForm');	
 	Route::post('/patient/order_medicine','OrderController@createOrder');	
 	Route::get('/patient/medicine_orders','OrderController@orders');	
+	Route::get('/patient/medicine_order/{id}','OrderController@order');	
 });
 
 
