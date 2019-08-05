@@ -52,6 +52,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Doctor');
     }
+    public function remotePatient()
+    {
+        return $this->hasOne('App\RemotePatient');
+    }
     
        public function counter_admin()
        {

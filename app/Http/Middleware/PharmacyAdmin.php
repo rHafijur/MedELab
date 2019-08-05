@@ -42,6 +42,12 @@ class PharmacyAdmin
             case 7:
                 return redirect('lab_admin');
                 break;
+            case 8:
+                return redirect('sample_collector');
+                break;
+            case 9:
+                return redirect('remote_patient');
+                break;
             default:
                 return abort(404);
                 break;

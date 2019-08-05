@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Doctor
+class RemotePatient
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Doctor
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->role_id!=3){
+        if(Auth::check() && Auth::user()->role_id!=9){
             switch (Auth::user()->role_id) {
                 case 1:
                     return redirect('superadmin');
@@ -30,9 +30,9 @@ class Doctor
                     return redirect('doctor');
                     break;
 
-                // case 4:
-                //     return redirect('word_admin');
-                //     break;
+                case 4:
+                    return redirect('word_admin');
+                    break;
                 case 5:
                     return redirect('pharmacy_admin');
                     break;

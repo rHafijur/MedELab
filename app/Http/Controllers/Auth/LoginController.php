@@ -64,6 +64,12 @@ class LoginController extends Controller
             case 7:
                 return '/lab_admin';
                 break;
+            case 8:
+                return '/sample_collector';
+                break;
+            case 9:
+                return '/remote_patient';
+                break;
             default:
                 return abort(404);
                 break;

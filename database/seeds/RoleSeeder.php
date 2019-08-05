@@ -39,5 +39,13 @@ class RoleSeeder extends Seeder
             'id'=>7,
             'title'=>'Lab Admin'
         ]);
+        Role::create([
+            'id'=>8,
+            'title'=>'Sample Collector'
+        ]);
+        Role::create([
+            'id'=>9,
+            'title'=>'Remote Patient'
+        ]);
     }
 }

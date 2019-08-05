@@ -89,6 +89,19 @@ Route::middleware(['auth','pharmacyAdmin'])->group(function () {
 	Route::post('/pharmacy_admin/delivered','OrderController@deliver');			
 });
 
+Route::middleware(['auth','sampleCollector'])->group(function () {
+	Route::get('/sample_collector','SampleCollectorController@index');
+	Route::get('sample_collector/remote_test_order/{id}','RemoteTestOrderController@collectorView');						
+	Route::post('sample_collector/set_tube_id/','RemoteTestOrderController@setTubeId');						
+});
+
+Route::middleware(['auth','remotePatient'])->group(function () {
+	Route::get('/remote_patient','RemotePatientController@index');					
+	Route::get('remote_patient/test_order','RemoteTestOrderController@viewOrderForm');					
+	Route::post('remote_patient/test_order','RemoteTestOrderController@createOrder');					
+	Route::get('remote_patient/remote_test_order/{id}','RemoteTestOrderController@view');					
+});
+
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('patient_id_card/{id}','PatientController@generateIdCard');

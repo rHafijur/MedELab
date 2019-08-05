@@ -21,6 +21,12 @@
                 @case(7)
                     
                     @break
+                @case(8)
+                    
+                    @break
+                @case(9)
+                    
+                    @break
                 @default
                     
             @endswitch --}}
@@ -86,6 +92,20 @@
                 @case(7)
                 <li class="nav-item">
                   <a class="nav-link" href="{{url('lab_admin')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+                </li>
+                    @break
+                    @case(8)
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{url('sample_collector')}}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                    </li>
+                    @break
+                @case(9)
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('remote_patient')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                 </li>
@@ -199,6 +219,16 @@
                     @break
                 @case(7)
                     
+                    @break
+                @case(8)
+                    
+                    @break
+                @case(9)
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/remote_patient/test_order')}}">
+                    <i class="fas fa-fw fa-user-plus"></i>
+                    <span>Order Tests</span></a>
+                </li>
                     @break
                 @default
                     

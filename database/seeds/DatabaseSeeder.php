@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
                 LabAdminSeeder::class,
                 PharmacyMedicineSeeder::class,
                 PharmacyAdminSeeder::class,
+                RemotePatientSeeder::class,
+                SampleCollectorSeeder::class,
         	]
         );
     }
